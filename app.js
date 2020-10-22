@@ -10,14 +10,15 @@ app.set('view engine', 'handlebars')
 app.use(bodyParser.urlencoded({ extended: true }))
 
 app.get('/', (req, res) => {
-  res.render('index')
+	res.render('index')
 })
 
 app.post('/', (req, res) => {
-  const trashTalk = generateTrashTalk(req.body.target)
-  res.render('index', { trashTalk: trashTalk })
+	const options = req.body.target
+	const trashTalk = generateTrashTalk(req.body.target)
+	res.render('index', { trashTalk: trashTalk })
 })
 
 app.listen(port, () => {
-  console.log(`Express app listening on port ${port}.`)
+	console.log(`Express app listening on port ${port}.`)
 })
